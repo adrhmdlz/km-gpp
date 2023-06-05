@@ -1,6 +1,6 @@
+<a href="https://github.com/adrhmdlz/km-gpp" target="_blank"><img alt="GitHub hits" src="https://img.shields.io/github/last-commit/adrhmdlz/km-gpp?label=repository%20updated&style=flat-square"></a>
 
 <h1 align="center">
-  <br>
   <!--
   <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.png" alt="Markdownify" width="200"></a>
   -->
@@ -55,14 +55,13 @@ $ python gppkok(LinuxUser).py
 
 ## Kamu Mungkin Tertarik
 
-- [Python Basic](https://github.com/adhmdlzdn/python-basic) - A module or materials about the Python programming language
-- [Simptech.id](https://github.com/adhmdlzdn/simptech-id) - A simple website using only HTML, CSS and JS
+- [Km Gpp](https://github.com/adrhmdlz/km-gpp) - A simple program using Python language
+- [Simptech.id](https://github.com/adrhmdlz/simptech-id) - A simple website using only HTML, CSS and JS
 
 ---
 
-> [adhmdlzdn.github.io](https://adhmdlzdn.github.io) &nbsp;&middot;&nbsp;
-> GitHub [@adhmdlzdn](https://github.com/adhmdlzdn) &nbsp;&middot;&nbsp;
-> Instagram [@adrhmdlz](https://instagram.com/adrhmdlz)
-
-
-
+> [adrhmdlz.github.io](https://adrhmdlz.github.io) &nbsp;&middot;&nbsp;
+> Gmail [@adrianalzidan35](mailto:adrianalzidan35@gmail.com) &nbsp;&middot;&nbsp;
+> GitHub [@adrhmdlz](https://github.com/adrhmdlz) &nbsp;&middot;&nbsp;
+> Instagram [@adrhmdlz](https://instagram.com/adrhmdlz) &nbsp;&middot;&nbsp;
+> LinkedIn [@adrhmdlz](https://www.linkedin.com/in/adrhmdlz/)
