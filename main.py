@@ -107,37 +107,37 @@ def user():
 
 ## 3.3 - User Login
 def login():
-    clear()
-    print(f"{msg_p} Silahkan masukan username dan password yang sudah didaftarkan")
-    usr_lgn = input("Username : ")
-    name.append(usr_lgn)
-    passwd_lgn = gp("Password : ")
+	clear()
+	print(f"{msg_p} Silahkan masukan username dan password yang sudah didaftarkan")
+	usr_lgn = input("Username : ")
+	name.append(usr_lgn)
+	passwd_lgn = gp("Password : ")
     # membuka file user.txt
-    with open("user.txt", "r") as u:
-    	user = [line.strip() for line in u]
+	with open("user.txt", "r") as u:
+		user = [line.strip() for line in u]
     # membuka file password.txt
-    with open("password.txt", "r") as p:
-    	passw = [line.strip() for line in p]
-    try:
-        # fungsi dibawah adalah menentukan jika user dan login benar, password salah, dan user tidak terdaftar
-        while True:
-            # user password benar
-            if usr_lgn in user and passwd_lgn in passw:
-                time.sleep(2)
-                loading()
-            # password salah
-            elif usr_lgn in user and passwd_lgn not in passw:
-                print(f"{msg_p} Password yang dimasukan salah")
-                time.sleep(1)
-                login()
-            # user tidak terdaftar di data
-            else:
-                print(f"{msg_p} Username {usr_lgn} tidak ada di data")
-                time.sleep(1)
-    except KeyboardInterrupt:
-        print(f"\n{msg_p} CTRL + C detected, exiting program...")
-        time.sleep(1.5)
-        exit()
+	with open("password.txt", "r") as p:
+		passw = [line.strip() for line in p]
+	try:
+		# fungsi dibawah adalah menentukan jika user dan login benar, password salah, dan user tidak terdaftar
+		while True:
+			# user password benar
+			if usr_lgn in user and passwd_lgn in passw:
+				time.sleep(2)
+				loading()
+			# password salah
+			elif usr_lgn in user and passwd_lgn not in passw:
+				print(f"{msg_p} Password yang dimasukan salah")
+				time.sleep(1)
+				login()
+			# user tidak terdaftar di data
+			else:
+				print(f"{msg_p} Username {usr_lgn} tidak ada di data")
+				time.sleep(1)
+	except KeyboardInterrupt:
+		print(f"\n{msg_p} CTRL + C detected, exiting program...")
+		time.sleep(1.5)
+		exit()
 
 ## 3.4 - User Register
 def register():
@@ -159,63 +159,67 @@ def register():
 
 ## 3.5 - Loading
 def loading():
-    clear()
-    n = 100
-    for i in range(n):
-    	time.sleep(0.05)
-    	sys.stdout.write("\r"+"Loading... Process "+str(i).format(n*100)+"%")
-    clear()
-    sys.stdout.write("\r"+"Loading... Finished\n")
-    print(f"Selamat datang, {name[0]}")
-    time.sleep(2)
-    menu()
+	clear()
+	n = 100
+	for i in range(n):
+		time.sleep(0.05)
+		sys.stdout.write("\r"+"Loading... Process "+str(i).format(n*100)+"%")
+	clear()
+	sys.stdout.write("\r"+"Loading... Finished\n")
+	print(f"Selamat datang, {name[0]}")
+	time.sleep(2)
+	menu()
 
 ## 3.6 - Menu utama
 def menu():
-    clear()
-    start_b()
-    template()
-    print(f"{msg_o} Opsi : ")
-    print(f"1. Tebak-tebakan")
-    print(f"2. Quiz")
-    print(f"3. Rekomendasi Film Untuk Mu")
-    print(f"4. Kalkulator Sederhana")
-    print(f"8. About Me")
-    print(f"9. Restart Program")
-    print(f"0. Keluar Program")
-    try:
-        opsi = input(f"{msg_c} Pilihanmu : ")
-        while True:
-            if opsi == "1":
-                time.sleep(1)
-                tbk()
-            elif opsi == "2":
-                time.sleep(1)
-                qz()
-            elif opsi == "3":
-                time.sleep(1)
-                rfum()
-            elif opsi == "4":
-                time.sleep(1)
-                klk()
-            elif opsi == "8":
-                time.sleep(1)
-                abt()
-            elif opsi == "9":
-                time.sleep(1)
-                rp()
-            elif opsi == "0":
-                clear()
-                print(f"{msg_p} Selamat tinggal, {name[0]}!")
-                time.sleep(1.5)
-                exit()
-            else:
-                print(f"{msg_p} Error : Input yang dimasukan tidak ada, silahkan pilih input yang lain")
-                time.sleep(0.5)
-    except KeyboardInterrupt:
-        print(f"\n{msg_p} CTRL + C detected, exiting program...")
-        time.sleep(1.5)
-        exit()
+	clear()
+	start_b()
+	template()
+	print(f"{msg_o} Opsi : ")
+	print(f"1. Tebak-tebakan")
+	print(f"2. Quiz")
+	print(f"3. Rekomendasi Film Untuk Mu")
+	print(f"4. Kalkulator Sederhana")
+	print(f"5. Check Score Game Kamu")
+	print(f"8. About Me")
+	print(f"9. Restart Program")
+	print(f"0. Keluar Program")
+	try:
+		opsi = input(f"{msg_c} Pilihanmu : ")
+		while True:
+			if opsi == "1":
+				time.sleep(1)
+				tbk()
+			elif opsi == "2":
+				time.sleep(1)
+				qz()
+			elif opsi == "3":
+				time.sleep(1)
+				rfum()
+			elif opsi == "4":
+				time.sleep(1)
+				klk()
+			elif opsi == "5":
+				time.sleep(1)
+				cs()
+			elif opsi == "8":
+				time.sleep(1)
+				abt()
+			elif opsi == "9":
+				time.sleep(1)
+				rp()
+			elif opsi == "0":
+				clear()
+				print(f"{msg_p} Selamat tinggal, {name[0]}!")
+				time.sleep(1.5)
+				exit()
+			else:
+				print(f"{msg_p} Error : Input yang dimasukan tidak ada, silahkan pilih input yang lain")
+				time.sleep(0.5)
+	except KeyboardInterrupt:
+		print(f"\n{msg_p} CTRL + C detected, exiting program...")
+		time.sleep(1.5)
+		exit()
 
 ## 3.7 - Tebak-tebakan
 def tbk():
@@ -503,7 +507,11 @@ def klk():
 	print(f"Waktu   : {waktu}")
 	response = input(f"{msg_p} Selamat datang di program {k}, silahkan tekan enter untuk melanjutkan...")
 
-## 3.11 - About Me
+## 3.11 - Check Score
+def cs():
+	pass
+
+## 3.12 - About Me
 def abt():
     pass
 

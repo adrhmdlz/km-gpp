@@ -8,7 +8,7 @@
   <br>
 </h1>
 
-<h4 align="center">Sebuah projek simple yang menggunakan bahasa Python versi 3.10. Dibuat untuk mengetahui seberapa jauh kemampuan pemrograman yang dimiliki. Terdapat beberapa fitur didalamnya, diantaranya mini games, dan beberapa tools yang mungkin berguna untuk keseharian.</h4>
+<h4 align="center">Sebuah projek simple yang menggunakan bahasa Python versi 3.11.4. Dibuat untuk mengetahui seberapa jauh kemampuan pemrograman yang dimiliki. Terdapat beberapa fitur didalamnya, diantaranya mini games, dan beberapa tools yang mungkin berguna untuk keseharian.</h4>
 
 <br>
 
@@ -25,8 +25,11 @@
 ## Fitur
 
 * User login
+  <p>Fitur ini memungkinkan user masuk ke dalam program dan mendapatkan fitur penuh. Jika user tidak memiliki akses login, user dapat membuatnya / meregister nya didalam program.</p>
 * Mini games
+  <p>Terdapat beberapa mini games yang bisa user coba, diantaranya game Tebak-tebakan, Quizz receh, dan program-program lain bisa didapatkan pada update selanjutnya.</p>
 * Simple tools
+  <p>Terdapat juga beberapa tools yang bisa user gunakan seperti kalkulator, program untuk mendapatkan rekomendasi nonton film, dan tentu nya tools lain yang akan di update di masa yang akan datang.</p>
 
 ## Cara Menggunakan
 
@@ -38,14 +41,13 @@ Untuk mengclone dan menggunakan program ini, silahkan ikuti sedikit tutorial dib
 # Clone repository ini
 $ git clone https://github.com/adhmdlzdn/km-gpp
 
-# Masuk ke dalam repository
+# Masuk ke dalam folder
 $ cd km-gpp
 
-# Untuk pengguna windows, gunakan command ini
-$ python gppkok(WindowsUser).py
-
-# Untuk pengguna linux, gunakan command ini
-$ python gppkok(LinuxUser).py
+# Untuk menggunakan atau menjalankan program, ketikan
+$ python main.py
+# Atau untuk linux, ketikan
+$ python3 main.py
 ```
 
 > **Note**
