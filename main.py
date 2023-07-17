@@ -12,7 +12,7 @@ def template():
     print(f"{'-'*45}")
 
 ## 0.2 - OS Identifier
-def osd():
+def os_identifier():
     system = pf.system()
     if system == "Linux":
         sp.call(["python3", "mainl.py"])
@@ -66,47 +66,37 @@ scifi = ["Spider-Man", "Iron-Man", "Venom", "Godzilla", "Terminator", "Evangelio
 
 # 3 - Main Program 
 ## 3.0 - Restart program
-def rp():
+def restart_program():
     python = sys.executable
     sp.call([python] + sys.argv)
 
 ## 3.1 - Mulai dari sini
 def main():
-    osd()
+    os_identifier()
     clear()
-    start_b()
+    main_banner()
     template()
-    try:
-        response = input(f"{msg_i} Tekan enter untuk melanjutkan...")
-    except KeyboardInterrupt:
-        print(f"\n{msg_p} CTRL + C detected, exiting program...")
-        time.sleep(1.5)
-        exit()
-    user()
+    response = input(f"{msg_i} Tekan enter untuk melanjutkan...")
+    user_login_confirmation()
 
 ## 3.2 - Konfirmasi user register & login (user akan melakukan register jika belum memiliki akun dan login jika memiliki akun)
-def user():
-    clear()
-    print(f"{msg_p} Sebelum mulai ada baiknya kamu login atau register terlebih dahulu ya")
-    try:
-        while True:
-            response = input(f"{msg_q} Apakah kamu sudah memiliki akun? (y/n) ")
-            if response.lower() == "y":
-                time.sleep(1.5)
-                login() # user akan dibawa ke fungsi login
-            elif response.lower() == "n":
-                time.sleep(1.5)
-                register() # user akan dibawa ke fungsi register untuk mendaftarkan nama dan password baru
-            else:
-                print(f"{msg_p} Input yang dimasukan salah")
-                time.sleep(1)
-    except KeyboardInterrupt:
-        print(f"\n{msg_p} CTRL + C detected, exiting program...")
-        time.sleep(1.5)
-        exit()
+def user_login_confirmation():
+	clear()
+	print(f"{msg_p} Sebelum mulai ada baiknya kamu login atau register terlebih dahulu ya")
+	while True:
+		response = input(f"{msg_q} Apakah kamu sudah memiliki akun? (y/n) ")
+		if response.lower() == "y":
+			time.sleep(1.5)
+			user_login() # user akan dibawa ke fungsi login
+		elif response.lower() == "n":
+			time.sleep(1.5)
+			user_register() # user akan dibawa ke fungsi register untuk mendaftarkan nama dan password baru
+		else:
+			print(f"{msg_p} Input yang dimasukan salah")
+			time.sleep(1)
 
 ## 3.3 - User Login
-def login():
+def user_login():
 	clear()
 	print(f"{msg_p} Silahkan masukan username dan password yang sudah didaftarkan")
 	usr_lgn = input("Username : ")
@@ -118,29 +108,24 @@ def login():
     # membuka file password.txt
 	with open("password.txt", "r") as p:
 		passw = [line.strip() for line in p]
-	try:
-		# fungsi dibawah adalah menentukan jika user dan login benar, password salah, dan user tidak terdaftar
-		while True:
-			# user password benar
-			if usr_lgn in user and passwd_lgn in passw:
-				time.sleep(2)
-				loading()
-			# password salah
-			elif usr_lgn in user and passwd_lgn not in passw:
-				print(f"{msg_p} Password yang dimasukan salah")
-				time.sleep(1)
-				login()
-			# user tidak terdaftar di data
-			else:
-				print(f"{msg_p} Username {usr_lgn} tidak ada di data")
-				time.sleep(1)
-	except KeyboardInterrupt:
-		print(f"\n{msg_p} CTRL + C detected, exiting program...")
-		time.sleep(1.5)
-		exit()
+	# fungsi dibawah adalah menentukan jika user dan login benar, password salah, dan user tidak terdaftar
+	while True:
+		# user password benar
+		if usr_lgn in user and passwd_lgn in passw:
+			time.sleep(2)
+			loading()
+		# password salah
+		elif usr_lgn in user and passwd_lgn not in passw:
+			print(f"{msg_p} Password yang dimasukan salah")
+			time.sleep(1)
+			user_login()
+		# user tidak terdaftar di data
+		else:
+			print(f"{msg_p} Username {usr_lgn} tidak ada di data")
+			time.sleep(1)
 
 ## 3.4 - User Register
-def register():
+def user_register():
     clear()
     print(f"{msg_p} Silahkan daftar dahulu")
     response1 = input("Masukkan nama yang ingin di daftarkan : ")
@@ -155,7 +140,7 @@ def register():
     p.close()
     time.sleep(1.5)
     clear()
-    login()
+    user_login()
 
 ## 3.5 - Loading
 def loading():
@@ -168,12 +153,12 @@ def loading():
 	sys.stdout.write("\r"+"Loading... Finished\n")
 	print(f"Selamat datang, {name[0]}")
 	time.sleep(2)
-	menu()
+	main_menu()
 
 ## 3.6 - Menu utama
-def menu():
+def main_menu():
 	clear()
-	start_b()
+	main_banner()
 	template()
 	print(f"{msg_o} Opsi : ")
 	print(f"1. Tebak-tebakan")
@@ -184,53 +169,48 @@ def menu():
 	print(f"8. About Me")
 	print(f"9. Restart Program")
 	print(f"0. Keluar Program")
-	try:
-		opsi = input(f"{msg_c} Pilihanmu : ")
-		while True:
-			if opsi == "1":
-				time.sleep(1)
-				tbk()
-			elif opsi == "2":
-				time.sleep(1)
-				qz()
-			elif opsi == "3":
-				time.sleep(1)
-				rfum()
-			elif opsi == "4":
-				time.sleep(1)
-				klk()
-			elif opsi == "5":
-				time.sleep(1)
-				cs()
-			elif opsi == "8":
-				time.sleep(1)
-				abt()
-			elif opsi == "9":
-				time.sleep(1)
-				rp()
-			elif opsi == "0":
-				clear()
-				print(f"{msg_p} Selamat tinggal, {name[0]}!")
-				time.sleep(1.5)
-				exit()
-			else:
-				print(f"{msg_p} Error : Input yang dimasukan tidak ada, silahkan pilih input yang lain")
-				time.sleep(0.5)
-	except KeyboardInterrupt:
-		print(f"\n{msg_p} CTRL + C detected, exiting program...")
-		time.sleep(1.5)
-		exit()
+	opsi = input(f"{msg_c} Pilihanmu : ")
+	while True:
+		if opsi == "1":
+			time.sleep(1)
+			tebak_tebakan()
+		elif opsi == "2":
+			time.sleep(1)
+			quiz()
+		elif opsi == "3":
+			time.sleep(1)
+			rekomen_film()
+		elif opsi == "4":
+			time.sleep(1)
+			kalkulator()
+		elif opsi == "5":
+			time.sleep(1)
+			check_score()
+		elif opsi == "8":
+			time.sleep(1)
+			about_me()
+		elif opsi == "9":
+			time.sleep(1)
+			restart_program()
+		elif opsi == "0":
+			clear()
+			print(f"{msg_p} Selamat tinggal, {name[0]}!")
+			time.sleep(1.5)
+			exit()
+		else:
+			print(f"{msg_p} Error : Input yang dimasukan tidak ada, silahkan pilih input yang lain")
+			time.sleep(0.5)
 
 ## 3.7 - Tebak-tebakan
-def tbk():
+def tebak_tebakan():
 	clear()
-	b2()
+	tebak_tebakan_banner()
 	print(f"Waktu   : {waktu}")
 	response = input(f"{msg_p} Selamat datang di program {tb}, silahkan tekan enter untuk melanjutkan...")
 	time.sleep(1.5)
-	tbp()
+	tebak_tebakan_main()
 ### 3.7.1 - Mulai Game
-def tbp():
+def tebak_tebakan_main():
 	clear()
 	tbkscore = 0
 	soal = 1
@@ -292,7 +272,7 @@ def tbp():
 		if response.lower() == "y":
 			time.sleep(1.5)
 			return tbkscore
-			menu()
+			main_menu()
 		elif response.lower() == "n":
 			clear()
 			print(f"{msg_p} Selamat tinggal, {name[0]}")
@@ -303,15 +283,15 @@ def tbp():
 			time.sleep(1)
 
 ## 3.8 - Quiz
-def qz():
+def quiz():
 	clear()
-	b3()
+	quiz_banner()
 	print(f"Waktu   : {waktu}")
 	response = input(f"{msg_p} Selamat datang di program {qzz}, silahkan tekan enter untuk melanjutkan...")
 	time.sleep(1.5)
-	qzp()
+	quiz_main()
 ### 3.8.1 - Mulai Game
-def qzp():
+def quiz_main():
 	clear()
 	qscore = 0
 	soal = 1
@@ -326,7 +306,7 @@ def qzp():
 		print(f"{msg_i} Salah, yang benar adalah '{q_jwb[0]}'. Maav, kamu kurang beruntung :(")
 		time.sleep(1)
 	#### 3.8.1.2 - Soal nomor 2
-	print(f"{msg_q} {soal}. Jika ada 10 pejuang Indonesia yang berperang lalu ada satu orang yang gugur, ada berapa orang yang akan kembali ke markas?")
+	print(f"{msg_q} {soal}. Jika ada 10 pejuang Indonesia yang berestart_programerang lalu ada satu orang yang gugur, ada berapa orang yang akan kembali ke markas?")
 	response = input(f"{msg_c} Jawabanmu : ")
 	if response.lower() == q_jwb[1] or q_alt_jwb[1]:
 		time.sleep(1)
@@ -373,7 +353,7 @@ def qzp():
 		if response.lower() == "y":
 			time.sleep(1.5)
 			return qscore
-			menu()
+			main_menu()
 		elif response.lower() == "n":
 			clear()
 			print(f"{msg_p} Selamat tinggal, {name[0]}")
@@ -384,15 +364,15 @@ def qzp():
 			time.sleep(1)
 
 ## 3.9 - Rekomendasi Film Untuk Mu
-def rfum():
+def rekomen_film():
 	clear()
-	b4()
+	rekomen_film_banner()
 	print(f"Waktu   : {waktu}")
 	response = input(f"{msg_p} Selamat datang di program {rf}, silahkan tekan enter untuk melanjutkan...")
 	time.sleep(1.5)
-	rfu()
+	rekomen_film_main()
 ### 3.9.1 - Mulai
-def rfu():
+def rekomen_film_main():
 	print(f"{msg_p} Silahkan pilih genre yang kalian suka : (a)ction/(r)omance/(h)orror/(c)omedy/(s)cifi/(e)xit")
 	response = input(f"{msg_c} Pilihanmu : ")
 	while True:
@@ -409,10 +389,10 @@ def rfu():
 				if response.lower() == "y":
 					time.sleep(1)
 					clear()
-					rfu()
+					rekomen_film_main()
 				elif response.lower() == "n":
 					time.sleep(1)
-					menu()
+					main_menu()
 				else:
 					print(f"{msg_p} Input tidak dikenali")
 		#### 3.9.1.2 - Pilihan untuk rekomendasi film Romance
@@ -428,10 +408,10 @@ def rfu():
 				if response.lower() == "y":
 					time.sleep(1)
 					clear()
-					rfu()
+					rekomen_film_main()
 				elif response.lower() == "n":
 					time.sleep(1)
-					menu()
+					main_menu()
 				else:
 					print(f"{msg_p} Input tidak dikenali")
 		#### 3.9.1.3 - Pilihan untuk rekomendasi film Horror
@@ -447,10 +427,10 @@ def rfu():
 				if response.lower() == "y":
 					time.sleep(1)
 					clear()
-					rfu()
+					rekomen_film_main()
 				elif response.lower() == "n":
 					time.sleep(1)
-					menu()
+					main_menu()
 				else:
 					print(f"{msg_p} Input tidak dikenali")
 		#### 3.9.1.4 - Pilihan untuk rekomendasi film Comedy
@@ -466,10 +446,10 @@ def rfu():
 				if response.lower() == "y":
 					time.sleep(1)
 					clear()
-					rfu()
+					rekomen_film_main()
 				elif response.lower() == "n":
 					time.sleep(1)
-					menu()
+					main_menu()
 				else:
 					print(f"{msg_p} Input tidak dikenali")
 		#### 3.9.1.5 - Pilihan untuk rekomendasi film Sci-Fi
@@ -485,10 +465,10 @@ def rfu():
 				if response.lower() == "y":
 					time.sleep(1)
 					clear()
-					rfu()
+					rekomen_film_main()
 				elif response.lower() == "n":
 					time.sleep(1)
-					menu()
+					main_menu()
 				else:
 					print(f"{msg_p} Input tidak dikenali")
 		elif response.lower() == "e":
@@ -501,23 +481,23 @@ def rfu():
 			time.sleep(1)
 
 ## 3.10 - Kalkulator
-def klk():
+def kalkulator():
 	clear()
-	b5()
+	kalkulator_banner()
 	print(f"Waktu   : {waktu}")
 	response = input(f"{msg_p} Selamat datang di program {k}, silahkan tekan enter untuk melanjutkan...")
 
 ## 3.11 - Check Score
-def cs():
+def check_score():
 	pass
 
 ## 3.12 - About Me
-def abt():
+def about_me():
     pass
 
 # 4 - Banner
 ## 4.1 - Start Banner
-def start_b():
+def main_banner():
 	print(f'                   _         _    ')
 	print(f'                  | |       | |   ')
 	print(f'  __ _ _ __  _ __ | | _____ | | __')
@@ -527,7 +507,7 @@ def start_b():
 	print(f'  __/ | |   | |__________________ ')
 	print(f' |___/|_|   |____________________|\n')
 ## 4.2 - Tebak-tebakan banner
-def b2():
+def tebak_tebakan_banner():
 	print(' _   _     _    _   _     _               ')
 	print('| | | |   | |  | | | |   | |              ')
 	print('| |_| |__ | | _| |_| |__ | | ____ _ _ __  ')
@@ -536,7 +516,7 @@ def b2():
 	print(' \\__|_.__/|_|\\_\\\\__|_.__/|_|\\_\\__,_|_| |_|')
 	print('-------------------------------------------')
 ## 4.3 - Quiz banner
-def b3():
+def quiz_banner():
 	print('             _     ')
 	print('            (_)    ')
 	print('  __ _ _   _ _ ____')
@@ -547,7 +527,7 @@ def b3():
 	print('    |_|            ')
 	print('-------------------')
 ## 4.4 - Rekomendasi Film Untuk Mu
-def b4():
+def rekomen_film_banner():
 	print('       __                 ')
 	print('      / _|                ')
 	print(' _ __| |_ _   _ _ __ ___  ')
@@ -556,7 +536,7 @@ def b4():
 	print('|_|  |_|  \__,_|_| |_| |_|')
 	print('--------------------------')
 ## 4.5 - Kalkulator Sederhana
-def b5():
+def kalkulator_banner():
 	print(' _  __     _ _          _       _             ')
 	print('| |/ /    | | |        | |     | |            ')
 	print('| \' / __ _| | | ___   _| | __ _| |_ ___  _ __ ')
@@ -566,5 +546,10 @@ def b5():
 	print('----------------------------------------------')
 
 # 5 - Program Execution
-if __name__ == "__main__":
-    main()
+try:
+	if __name__ == "__main__":
+		main()
+except KeyboardInterrupt:
+	print(f"\n{msg_p} CTRL + C detected, exiting program...")
+	time.sleep(1.5)
+	exit()
